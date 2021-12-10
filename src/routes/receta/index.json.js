@@ -8,7 +8,6 @@ export async function get({ query }) {
 
 	try {
 		let { data: recipe } = await getCache(url)
-		// let recipe
 
 		if (!recipe) {
 			recipe = await parseRecipe(`http://${url}`)
