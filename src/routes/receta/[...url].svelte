@@ -19,13 +19,15 @@
 
 <script>
     // import RelatedRecipes from '$lib/components/RelatedRecipes.svelte'
+    import Meta from '$lib/components/Meta.svelte'
     export let recipe = {};
 
 </script>
 
-<svelte:head>
-    <title>Cocinanding - {recipe.title}</title>
-</svelte:head>
+<Meta
+    title={recipe.title}
+    image={recipe.image}
+/>
 
 <div class="max-w-screen-sm w-full mx-auto">
     <div class="h-80 overflow-hidden ">
