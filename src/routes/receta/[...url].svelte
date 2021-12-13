@@ -4,6 +4,7 @@
     export async function load({page, fetch}) {
         
         const site = parse(page.params.url).domainWithoutSuffix
+        console.log(site);
         const res = await fetch(`/recipes/${site}/show.json?url=${page.params.url}`);
 
         if (!res.ok) {

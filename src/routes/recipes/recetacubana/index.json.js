@@ -10,11 +10,11 @@ export async function get({ query }) {
 
 	const $ = cheerio.load(html)
 
-	const recipes =  $('article').map((i, el) => {
+	const recipes =  $('article.type-post').map((i, el) => {
 		return {
 			title: $(el).find('h2').text().trim().replace(/\.+$/,''),
 			url: $(el).find('h2 a').attr('href'),
-			image: $(el).find('img.post-image').attr('data-srcset'),
+			image: $(el).find('img.post-image').attr('data-src'),
 		}
 	})
 	.toArray()	

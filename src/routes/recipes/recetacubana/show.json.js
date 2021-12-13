@@ -13,14 +13,9 @@ export async function get({ query }) {
 	const recipe = {
 			url: res.url,
 			title: $('h1.entry-title').text(),
-			image: $('.wp-block-image img').attr('src'),
-			ingredients: (()=>{
-				let ingredients = $('.body-content ul li').map( (i,el) => $(el).text().trim() ).toArray()
-				if (ingredients.length) return ingredients
-				ingredients = $('.body-content p:first-of-type').text().replace('Ingredientes','')
-				return	ingredients
-			})(),
-			instructions: $('.body-content ul ~ p').map( (i,el) => $(el).text().trim() ).toArray(),
+			image: $('img.recipe-image').attr('data-src'),
+			ingredients: $('ul.ing-list li').map( (i,el) => $(el).text().trim() ).toArray(),
+			instructions: $('.recipe-instruction').map( (i,el) => $(el).text().trim() ).toArray(),
 			country: 'cuba'
 	}
 
