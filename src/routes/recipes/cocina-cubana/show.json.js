@@ -5,8 +5,7 @@ export async function get({ query }) {
 
 	if ( !url ) return null
 
-	const url = `http://${url}`
-	const res = await fetch(url)
+	const res = await fetch(`http://${url}`)
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
