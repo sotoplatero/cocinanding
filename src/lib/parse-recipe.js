@@ -32,6 +32,39 @@ export const parseRecipe = async (url) => {
 		}
 	}
 
-	return {}
+	if ( /mycolombianrecipes/.test(url) ) {
+		return {
+			url: response.url,
+			title: $('.wprm-recipe-name').text(),
+			image: $('.wprm-recipe-image img').attr('data-lazy-src'),
+			ingredients: $('li.wprm-recipe-ingredient').map( (i,el) => $(el).text().trim() ).toArray(),
+			instructions: $('li.wprm-recipe-instruction').map( (i,el) => $(el).text().trim() ).toArray(),
+			country: 'colombia'
+		}
+	}
+	if ( /cocina-cubana/.test(url) ) {
+		return {
+			url: response.url,
+			title: $('h1').text(),
+			image: $('amp-img').attr('src'),
+			ingredients: $('.ingredient').map( (i,el) => $(el).text().trim() ).toArray(),
+			instructions: $('.itemCompleteBottomPreparation ol li').map( (i,el) => $(el).text().trim() ).toArray(),
+			country: 'cuba'
+		}
+	}
+	if ( /glotoncubano/.test(url) ) {
+		return {
+			url: response.url,
+			title: $('h1.entry-title').text(),
+			image: $('amp-img').attr('src'),
+			ingredients: $('.ingredient').map( (i,el) => $(el).text().trim() ).toArray(),
+			instructions: $('.itemCompleteBottomPreparation ol li').map( (i,el) => $(el).text().trim() ).toArray(),
+			country: 'cuba'
+		}
+	}
+	
+
+
+	return null
 
 }

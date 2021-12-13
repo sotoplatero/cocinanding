@@ -8,8 +8,12 @@
                 error: new Error(`Could not load recipe`)
             };
         }
-
         const recipe = await res.json();
+
+        if (!recipe) {
+            return null
+        }
+
         return {
             props: { recipe }
         };
@@ -18,23 +22,28 @@
 </script>
 
 <script>
-    // import RelatedRecipes from '$lib/components/RelatedRecipes.svelte'
+    import RelatedRecipes from '$lib/components/RelatedRecipes.svelte'
+    import Meta from '$lib/components/Meta.svelte'
     export let recipe = {};
 
 </script>
 
-<svelte:head>
-    <title>Cocinanding - {recipe.title}</title>
-</svelte:head>
+<Meta
+    title={recipe.title}
+    image={recipe.image}
+/>
 
 <div class="max-w-screen-sm w-full mx-auto">
-    <div class="h-80 overflow-hidden ">
-        <img
-                src="{recipe.image}"
-                alt="{recipe.title}"
-                class="rounded-2xl object-cover bg-center w-full h-full object-cover"
-                loading="lazy"
-        >
+    <div class="overflow-hidden ">
+        <figure class="aspect-w-4 aspect-h-3">
+            <img
+                    src="{recipe.image}"
+                    alt="{recipe.title}"
+                    class="rounded-2xl object-cover w-full h-full"
+                    loading="lazy"
+            >
+            
+        </figure>
     </div>
     <h1 class="text-3xl sm:text-5xl font-semibold my-8 text-center">
         {recipe.title}
@@ -101,7 +110,7 @@
 
 </div>
 
-<!-- <RelatedRecipes {recipe}/> -->
+<RelatedRecipes {recipe}/>
 
 <style>
     h2{ @apply text-2xl sm:text-4xl font-semibold mb-6; }

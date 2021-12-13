@@ -3,19 +3,19 @@ import cheerio from 'cheerio'
 export async function get({ query }) {
 	const q = query.get('q') || ''
 
-	const url = `https://www.cocina-cubana.com/buscar/${q.replace(/\s+/,'-')}`
+	const url = `https://www.mycolombianrecipes.com/es/?s=${q}`
 	const res = await fetch(url)
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
 
 
-	const recipes =  $('.itemPublic a')
+	const recipes =  $('article.entry')
 		.map((i, el) => {
 			return {
 				title: $(el).find('h2').text(),
-				url: $(el).attr('href'),
-				image: $(el).find('.itemPublicImage amp-img').attr('src'),
+				url: $(el).find('h2 a').attr('href'),
+				image: $(el).find('.post-image').attr('src'),
 			}
 		}).toArray()	
 
