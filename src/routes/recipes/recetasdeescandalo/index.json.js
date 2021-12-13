@@ -15,6 +15,7 @@ export async function get({ query }) {
 			title: $(el).find('h2').text(),
 			url: $(el).find('h2 a').attr('href'),
 			image: $(el).find('.entry-featured.wp-post-image ').attr('data-src'),
+            yields: $(el).find('[itemprop="recipeYield"]')?.text(),
 		}
 	}).toArray()
 
@@ -22,6 +23,6 @@ export async function get({ query }) {
 		header: {
 			'Cache-Control': 'max-age=0, s-maxage=86400'
 		},
-		body: recipes
+		body: recipes.filter( el => !!el.yields )
 	}
 }

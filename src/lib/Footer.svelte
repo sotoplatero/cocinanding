@@ -14,13 +14,13 @@
 			</ul>
 			<ul class="space-y-1">
 				<li>
-					<a href="/recetas-mexico">Recetas con Carne</a>	
+					<a href="/recetas-con-carne">Recetas con Carne</a>	
 				</li>
 				<li>
-					<a href="/recetas-cuba">Recetas con Cerdo</a>	
+					<a href="/recetas-con-cerdo">Recetas con Cerdo</a>	
 				</li>
 				<li>
-					<a href="/recetas-colombia">Recetas con Pollo</a>	
+					<a href="/recetas-con-pollo">Recetas con Pollo</a>	
 				</li>
 			</ul>
 		</div>
