@@ -9,7 +9,7 @@ export const Q = ['pollo', 'cerdo', 'carne', 'pescado']
 export const SITES = {
 	cuba: ['cocina-cubana','recetacubana','dcubanos'],
 	mexico: ['mexicoenmicocina','recetas-mexicanas'],
-	peru: [],
+	peru: ['comeperuano','recetascocinaperuana'],
 	colombia: ['mycolombianrecipes'],
 	venezuela: [],
 	'*': [ 'recetatipica', 'recetasgratis', 'recetasdeescandalo' ],

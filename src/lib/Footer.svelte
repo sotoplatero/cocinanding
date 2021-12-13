@@ -11,6 +11,9 @@
 				<li>
 					<a href="/recetas-colombia">Recetas de Colombia</a>	
 				</li>
+				<li>
+					<a href="/recetas-peru">Recetas de Perú</a>	
+				</li>
 			</ul>
 			<ul class="space-y-1">
 				<li>
