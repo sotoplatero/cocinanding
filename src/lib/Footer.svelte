@@ -25,6 +25,9 @@
 				<li>
 					<a href="/recetas-con-pollo">Recetas con Pollo</a>	
 				</li>
+				<li>
+					<a href="/recetas-con-pescado">Recetas con Pescado</a>	
+				</li>
 			</ul>
 		</div>
 		<img src="/cocinanding-logo.jpg" alt="cocinanding logo" class="w-20 mx-auto mt-8">
