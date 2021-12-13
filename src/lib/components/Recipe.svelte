@@ -11,7 +11,7 @@
 			loading="lazy"
 		>	
 	</div>
-	<h2 class="text-md font-semibold mx-4 mt-1 text-center text-gray-800">
+	<h2 class="text-lg font-semibold mx-4 mt-1 text-center text-gray-800">
 		{recipe.title}
 	</h2>
 </a>

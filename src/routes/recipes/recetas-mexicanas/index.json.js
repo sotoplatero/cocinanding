@@ -3,21 +3,20 @@ import cheerio from 'cheerio'
 export async function get({ query }) {
 	const q = query.get('q') || ''
 
-	const url = `https://www.recetasgratis.net/busqueda?q=${q}`
+	const url = `https://recetas-mexicanas.com.mx/?s=${q}`
 	const res = await fetch(url)
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
 
-
-	const recipes =  $('.resultado').map((i, el) => {
+	const recipes =  $('article a').map((i, el) => {
 		return {
-			title: $(el).find('.titulo.titulo--resultado').text(),
-			url: $(el).find('.titulo.titulo--resultado').attr('href'),
-			image: $(el).find('.imagen').attr('src'),
+			title: $(el).find('p').text(),
+			url: $(el).attr('href'),
+			image: $(el).find('.article-image').attr('style').match(/https.+\.jpg/)[0],
 		}
 	}).toArray()	
-
+	
 	return {
 		header: {
 			'Cache-Control': 'max-age=0, s-maxage=86400'

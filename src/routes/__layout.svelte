@@ -10,7 +10,7 @@
 {/if}
 <div class="min-h-screen">
 	<Header/>
-	<main >
+	<main class="container max-w-screen-lg mx-auto px-2 md:px-0">
 		<slot/>
 	</main>
 	<Footer/>

@@ -3,17 +3,18 @@ import cheerio from 'cheerio'
 export async function get({ query }) {
 	const q = query.get('q') || ''
 
-	const url = `https://www.dcubanos.com/rinconcuba/?s=${q}`
+	const url = `https://recetatipica.com/?s=${q}`
 	const res = await fetch(url)
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
 
-	const recipes =  $('article').map((i, el) => {
+
+	const recipes =  $('article:not(.category-ingredientes,.category-colecciones)').map((i, el) => {
 		return {
-			title: $(el).find('h2').text().trim().replace(/\.+$/,''),
-			url: $(el).find('h2 a').attr('href'),
-			image: $(el).find('.blog-post-image img').attr('src'),
+			title: $(el).find('h2.entry-title').text(),
+			url: $(el).find('h2.entry-title a').attr('href'),
+			image: $(el).find('img.entry-image').attr('src'),
 		}
 	}).toArray()	
 

@@ -1,6 +1,10 @@
 <script context="module">
-    export async function load({page, fetch, session, context}) {
-        const res = await fetch(`/receta.json?url=${page.params.url}`);
+    import { parse } from 'tldts';
+
+    export async function load({page, fetch}) {
+        
+        const site = parse(page.params.url).domainWithoutSuffix
+        const res = await fetch(`/recipes/${site}/show.json?url=${page.params.url}`);
 
         if (!res.ok) {
             return {
@@ -9,23 +13,22 @@
             };
         }
         const recipe = await res.json();
-
         if (!recipe) {
             return null
         }
-
+        
         return {
             props: { recipe }
         };
-
+        
     }
 </script>
 
 <script>
     import RelatedRecipes from '$lib/components/RelatedRecipes.svelte'
     import Meta from '$lib/components/Meta.svelte'
-    export let recipe = {};
-
+    export let recipe;
+    
 </script>
 
 <Meta
@@ -33,27 +36,21 @@
     image={recipe.image}
 />
 
+<div class="overflow-hidden ">
+    <figure class="aspect-w-16 aspect-h-9">
+        <img
+                src="{recipe.image}"
+                alt="{recipe.title}"
+                class="rounded-2xl object-cover w-full h-full"
+                loading="lazy"
+        >
+        
+    </figure>
+</div>
+
 <div class="max-w-screen-sm w-full mx-auto">
-    <div class="overflow-hidden ">
-        <figure class="aspect-w-4 aspect-h-3">
-            <img
-                    src="{recipe.image}"
-                    alt="{recipe.title}"
-                    class="rounded-2xl object-cover w-full h-full"
-                    loading="lazy"
-            >
-            
-        </figure>
-    </div>
     <h1 class="text-3xl sm:text-5xl font-semibold my-8 text-center">
         {recipe.title}
-<!--         <a href={recipe.url} class="text-blue-500 hover:text-blue-600" target="_blank" rel="noopener noreferrer">
-            <svg class="w-6 h-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                 stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-            </svg>
-        </a> -->
     </h1>
     <div class="space-x-2 text-right mb-4">
         <a href={recipe.url} target="_blank" rel="noopener noreferrer">Receta Original</a>
@@ -82,7 +79,7 @@
     </h2>
     <ul class="text-lg text-gray-700 space-y-2">
         {#each recipe.ingredients as ingredient, index}
-            <li class="flex items-center py-2 font-semibold">
+            <li class="flex items-center py-1 font-semibold">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      class="h-6 w-6 text-gray-400 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -101,9 +98,7 @@
 
     <div class="space-y-4 text-lg text-gray-700">
         {#each recipe.instructions as intruction, index}
-            <p >
-                {intruction}
-            </p>
+            <p >{intruction}</p>
         {/each}
     </div>
 

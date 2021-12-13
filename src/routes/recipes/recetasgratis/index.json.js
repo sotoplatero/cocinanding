@@ -1,16 +1,16 @@
 import cheerio from 'cheerio'
 
 export async function get({ query }) {
-	const q = query.get('q') || ''
+	const q = query.get('q') || Q.random()
 
-	const url = `https://recetatipica.com/?s=${q}`
+	const url = `https://www.recetasgratis.net/busqueda?q=${q}`
 	const res = await fetch(url)
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
 
 
-	const recipes =  $('article').map((i, el) => {
+	const recipes =  $('.resultado').map((i, el) => {
 		return {
 			title: $(el).find('.titulo.titulo--resultado').text(),
 			url: $(el).find('.titulo.titulo--resultado').attr('href'),
@@ -22,6 +22,6 @@ export async function get({ query }) {
 		header: {
 			'Cache-Control': 'max-age=0, s-maxage=86400'
 		},
-		body: recipes
+		body: recipes.filter( el => !/articulo\-/.test(el.url))
 	}
 }

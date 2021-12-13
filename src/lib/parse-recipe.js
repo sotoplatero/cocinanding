@@ -9,6 +9,7 @@ export const parseRecipe = async (url) => {
 	const $ = cheerio.load(html)	
 
 	if ( /recetasgratis/.test(url) ) {
+
 		return {
 			url: response.url,
 			title: $('.titulo.titulo--articulo').text(),
@@ -18,6 +19,7 @@ export const parseRecipe = async (url) => {
 			commensals: parseInt( $('.property.comensales').text() || '0' ),
 			time: $('.property.duracion').text().trim(),
 		}
+		
 	}
 
 	if ( /recetasdeescandalo/.test(url) ) {

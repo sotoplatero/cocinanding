@@ -1,7 +1,4 @@
-export const randomText = () => {
-	const q = ['pollo', 'cerdo', 'atun', 'carne', 'pescado']
-	return q[Math.floor(Math.random() * q.length)]
-}
+export const Q = ['pollo', 'cerdo', 'carne', 'pescado']
 
 // export const SITES = [
 // 	'recetasgratis',
@@ -10,10 +7,10 @@ export const randomText = () => {
 // ]
 
 export const SITES = {
-	cuba: ['cocina-cubana','glotoncubano','decubanos'],
-	mexico: [],
+	cuba: ['cocina-cubana','recetacubana','dcubanos'],
+	mexico: ['mexicoenmicocina','recetas-mexicanas'],
 	peru: [],
 	colombia: ['mycolombianrecipes'],
 	venezuela: [],
-	'*': [ 'recetasgratis',	'recetasdeescandalo'],
+	'*': [ 'recetatipica', 'recetasgratis', 'recetasdeescandalo' ],
 }

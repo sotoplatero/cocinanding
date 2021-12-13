@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@sveltejs/adapter-auto': next
-  '@sveltejs/adapter-vercel': ^1.0.0-next.31
+  '@sveltejs/adapter-vercel': next
   '@sveltejs/kit': next
   '@tailwindcss/aspect-ratio': ^0.2.2
   '@typescript-eslint/eslint-plugin': ^4.33.0
@@ -21,6 +21,7 @@ specifiers:
   svelte-check: ^2.2.10
   svelte-preprocess: ^4.9.8
   tailwindcss: ^3.0.0
+  tldjs: ^2.3.1
   tslib: ^2.3.1
   typescript: ^4.5.3
 
@@ -45,6 +46,7 @@ devDependencies:
   svelte-check: 2.2.10_postcss@8.4.4+svelte@3.44.2
   svelte-preprocess: 4.9.8_cf70f91045ad2078a72a7d7db9332420
   tailwindcss: 3.0.0_6b4e3d148bdcb715d5f821ed0a9c268b
+  tldjs: 2.3.1
   tslib: 2.3.1
   typescript: 4.5.3
 
@@ -2078,6 +2080,10 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
+  /punycode/1.4.1:
+    resolution: {integrity: sha1-wNWmOycYgArY4esPpSachN1BhF4=}
+    dev: true
+
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
@@ -2463,6 +2469,14 @@ packages:
 
   /timsort/0.3.0:
     resolution: {integrity: sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=}
+    dev: true
+
+  /tldjs/2.3.1:
+    resolution: {integrity: sha512-W/YVH/QczLUxVjnQhFC61Iq232NWu3TqDdO0S/MtXVz4xybejBov4ud+CIwN9aYqjOecEqIy0PscGkwpG9ZyTw==}
+    engines: {node: '>= 4'}
+    requiresBuild: true
+    dependencies:
+      punycode: 1.4.1
     dev: true
 
   /tmp/0.2.1:

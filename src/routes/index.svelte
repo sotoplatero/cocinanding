@@ -1,10 +1,11 @@
 <script context="module">
-	import {SITES} from '$lib/config'
+	import {Q,SITES} from '$lib/config'
+	import '$lib/random'
 
 	export async function load({ fetch }) {
-		const site = SITES['*'][Math.floor(Math.random() * SITES.length)]
+		const site = SITES['*'].random()
 
-		const res = await fetch(`/recipes/${site}.json`);
+		const res = await fetch(`/recipes/${site}.json?q=${Q.random()}`);
 
 		if (!res.ok) {
 			return {
@@ -26,6 +27,7 @@
 	import Recipes from '$lib/components/Recipes.svelte'
 	export let recipes
 	export let sites
+	$: console.log(recipes);
 </script>
 
 <Recipes {recipes} {sites} />

@@ -1,7 +1,9 @@
 import cheerio from 'cheerio'
+import {Q} from '$lib/config'
+import '$lib/random'
 
 export async function get({ query }) {
-	const q = query.get('q') || ''
+	const q = query.get('q') || Q.random()
 
 	const url = `https://www.cocina-cubana.com/buscar/${q.replace(/\s+/,'-')}`
 	const res = await fetch(url)

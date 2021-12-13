@@ -1,14 +1,13 @@
 <script context="module">
-	import {randomText, SITES } from '$lib/config'
+	import {Q, SITES } from '$lib/config'
+	import '$lib/random'
 
 	export async function load({ page,fetch }) {
 		const { filter } = page.params
 		const sites = SITES[filter]
-		
-		const site = sites[Math.floor(Math.random() * sites.length)]
-		console.log(site);
-		const res = await fetch(`/recipes/${site}.json?q=${randomText()}`);
-console.log(res);
+		const site = sites.random()
+
+		const res = await fetch(`/recipes/${site}.json?q=${Q.random()}`);
 		if (!res.ok) {
 			return {
 				error: new Error(`Could not load`)
