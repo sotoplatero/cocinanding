@@ -3,29 +3,26 @@
 
 	export let recipes = []
 	export let sites = []
+	export let scope = ''
+
 	let q = ''
 	let loading = false
-	let count = 12
-	let from = 0
 
-	// $: from && search()
-	// $: $locale && search()
-	// $: console.log(recipes)
-	async function search() {
+	function search() {
 		loading = true
 		recipes = []
 		Promise.all( sites.map( async site => {
-			const url = `/recipes/${site}.json?q=${q}`
+			const url = `/recipes/${site}.json?q=${q + ' ' + scope}`
 			const res = await fetch(url);
 			const data = (res.ok) ? await res.json() : []	
-			recipes = [ ...recipes, ...data]
-		}))
-		.then(()=>loading = false)
+			recipes = [ ...recipes, ...data ]
+		})).then( () => loading = false )
+
 	}
 
 </script>
 
-<form action="" on:submit|preventDefault="{search}"  class="my-6 relative">
+<form on:submit|preventDefault|self={search} class="my-6 relative">
 	<input 
 		type="text" 
 		bind:value={q} 
@@ -50,6 +47,10 @@
 	<div class="grid grid-col-2 sm:grid-cols-4 gap-6 gap-y-12">
 		{#each recipes as recipe (recipe.url)}
 			<Recipe {recipe}/>
+		{:else}
+			{#if !loading}
+				No hay resultados
+			{/if}
 		{/each}
 	</div>
 </div>

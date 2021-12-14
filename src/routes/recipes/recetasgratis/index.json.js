@@ -22,6 +22,6 @@ export async function get({ query }) {
 		header: {
 			'Cache-Control': 'max-age=0, s-maxage=86400'
 		},
-		body: recipes.filter( el => !/articulo\-/.test(el.url))
+		body: recipes.filter( el => !/articulo\-/.test(el.url) && !/fake\-/.test(el.image))
 	}
 }
