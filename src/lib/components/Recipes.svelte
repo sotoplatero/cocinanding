@@ -48,7 +48,7 @@
 
 <div class="relative">
 	<div class="grid grid-col-2 sm:grid-cols-4 gap-6 gap-y-12">
-		{#each recipes as recipe, index (recipe.url)}
+		{#each recipes as recipe (recipe.url)}
 			<Recipe {recipe}/>
 		{/each}
 	</div>

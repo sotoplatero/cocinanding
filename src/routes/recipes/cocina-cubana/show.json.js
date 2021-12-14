@@ -5,13 +5,15 @@ export async function get({ query }) {
 
 	if ( !url ) return null
 
-	const res = await fetch(`http://${url}`)
+	const res = await fetch(`http://${url}`, { redirect: "error" })
+	console.log(res);
+	if (!res.ok) return null
 	const html = await res.text()
 
 	const $ = cheerio.load(html)
 
 	const recipe = {
-			url: response.url,
+			url: res.url,
 			title: $('h1').text(),
 			image: $('amp-img').attr('src'),
 			ingredients: $('.ingredient').map( (i,el) => $(el).text().trim() ).toArray(),

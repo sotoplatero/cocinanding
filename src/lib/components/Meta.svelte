@@ -9,7 +9,7 @@
 	export let avatar = ''
 	export let image = ''
 
-	$: fullTitle = 'Cocinanding - ' + title
+	$: fullTitle = `Cocinanding - ${title}`
 
 </script>
 

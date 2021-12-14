@@ -25,6 +25,8 @@
 
 <script>
 	// import { t, locale } from "$lib/i18n";
+	import { page } from '$app/stores';
+    import Meta from '$lib/components/Meta.svelte'	
 	import Recipe from '$lib/components/Recipe.svelte'
 
 	export let recipes = []
@@ -50,6 +52,11 @@
 	}
 
 </script>
+
+<Meta 
+	title="Recetas de {page.params.filter}"
+	image={recipes[1].image}
+/>
 
 <form action="" on:submit|preventDefault="{search}"  class="my-6 relative">
 	<input 
