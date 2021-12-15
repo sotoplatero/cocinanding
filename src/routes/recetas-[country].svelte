@@ -2,13 +2,14 @@
 	import {Q, SITES } from '$lib/config'
 	import '$lib/random'
 
-	export async function load({ page,fetch }) {
-		const { filter } = page.params
-		const sites = SITES[filter]
+	export async function load({ page, fetch }) {
+		const country = page.params.country
+		const sites = SITES[country]
 		if (!sites) return null
 		const site = sites.random()
-
-		const res = await fetch(`/recipes/${site}.json?q=${Q.random()}`);
+		const res = await fetch(`/recipes/${site}.json?q=pollo`);
+		
+		console.log(page);
 		if (!res.ok) {
 			return {
 				error: new Error(`Could not load`)
@@ -18,7 +19,8 @@
 		const recipes = await res.json()
 
 		return {
-			props: { sites,	recipes }
+			props: { recipes },
+			noFurtherUpdates: true
 		};
 
 	}	
@@ -35,8 +37,8 @@
 </script>
 
 <Meta 
-	title="Recetas de {$page.params.filter}"
+	title="Recetas de {$page.params.country}"
 	image={recipes[1].image}
 />
 
-<Recipes {recipes} {sites} />
+<Recipes bind:recipes {sites} />

@@ -35,7 +35,7 @@
 </script>
 
 <Meta 
-	title="Recetas de {$page.params.ingredient}"
+	title="Recetas con {$page.params.ingredient}"
 	image={recipes[1].image}
 />
 

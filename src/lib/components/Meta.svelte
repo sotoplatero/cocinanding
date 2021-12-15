@@ -2,8 +2,8 @@
 	import { page } from '$app/stores';	
     import { dev } from '$app/env';	
 
-	export let title = 'Cocinanding - Todas las Recetas Gratis'
-	export let description = 'Recetas'
+	export let title = 'Cocinanding - Todas las Recetas de Cocina Gratis'
+	export let description = 'Buscador de recetas de cocina en varios sitios web.'
 	export let url = `https://cocinanding.net${ $page.path }`
 	export let author = ''
 	export let avatar = ''

@@ -7,22 +7,26 @@
 
 	let q = ''
 	let loading = false
+	$: console.log(recipes);
+	function search(e) {
+		// console.log(e);
+		// loading = true
+		// recipes = []
+		// Promise.all( sites.map( async site => {
 
-	function search() {
-		loading = true
-		recipes = []
-		Promise.all( sites.map( async site => {
-			const url = `/recipes/${site}.json?q=${q + ' ' + scope}`
-			const res = await fetch(url);
-			const data = (res.ok) ? await res.json() : []	
-			recipes = [ ...recipes, ...data ]
-		})).then( () => loading = false )
+		// 	const url = `/recipes/${site}.json?q=${q + ' ' + scope}`
+		// 	const res = await fetch(url);
+		// 	const data = (res.ok) ? await res.json() : []	
+		// 	recipes = [ ...recipes, ...data ]
+
+		// }))
+		// .then( () => loading = false )
 
 	}
 
 </script>
 
-<form on:submit|preventDefault|self={search} class="my-6 relative">
+<form on:submit class="my-6 relative">
 	<input 
 		type="text" 
 		bind:value={q} 
