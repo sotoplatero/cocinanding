@@ -12,5 +12,6 @@ export const SITES = {
 	peru: ['comeperuano','recetascocinaperuana'],
 	colombia: ['mycolombianrecipes'],
 	venezuela: [],
-	'*': [ 'recetatipica', 'recetasgratis', 'recetasdeescandalo' ],
+	// '*': [ 'recetatipica', 'recetasgratis', 'recetasdeescandalo','divinacocina','cocinafacil' ],
+	'*': [ 'cocinafacil' ],
 }

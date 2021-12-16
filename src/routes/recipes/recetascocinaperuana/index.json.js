@@ -9,7 +9,7 @@ export async function get({ query }) {
 
 	const $ = cheerio.load(html)
 
-	const recipes =  $('article').map((i, el) => {
+	const recipes =  $('article:not(.type-page)').map((i, el) => {
 		return {
 			title: $(el).find('h2.entry-title').text(),
 			url: $(el).find('h2.entry-title a').attr('href'),

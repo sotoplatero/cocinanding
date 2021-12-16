@@ -4,7 +4,7 @@
 
 <header class="py-6">
 	<a href="/">
-		<img src="/cocinanding-logo.jpg" alt="cocinanding logo" class="w-40 mx-auto">
+		<img src="/cocinanding-logo.jpg" alt="cocinanding logo" class="w-40 print:w-20 mx-auto">
 	</a>
 <!--     <select bind:value={$locale}>
       {#each locales as l}

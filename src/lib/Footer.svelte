@@ -1,4 +1,4 @@
-<footer class="mt-24 py-16 bg-gray-100">
+<footer class="mt-24 py-16 bg-gray-100 print:hidden">
 	<div class="container max-w-screen-lg mx-auto">
 		<div class="flex gap-16 font-semibold text-gray-700">
 			<ul class="space-y-1">
