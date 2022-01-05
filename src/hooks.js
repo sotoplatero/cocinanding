@@ -7,7 +7,8 @@ export async function handle({ request, resolve }) {
 	const isRecipePath =/show\.json$/.test(request.path)
 
 	if ( isRecipePath ) {
-		let { data: recipe } = await getCache(url)
+		// let { data: recipe } = await getCache(url)
+		let recipe
 		if (!!recipe) {
 			return {
 				body: recipe
