@@ -27,7 +27,7 @@
 
 	// let recipes = []
 	let sites = SITES['*']
-	const q = $page.query.get('q') || Q.random()
+	const q = $page.url.searchParams.get('q') || Q.random()
 	let promiseRecipes = getRecipes()
 
 	async function getRecipes() {
@@ -36,7 +36,7 @@
 			return res.ok ? await res.json() : []
 		}))
 
-		return recipes.flat()
+		return recipes.flat().slice(0,32)
 	}
 	
 </script>

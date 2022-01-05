@@ -1,10 +1,9 @@
 import {getCache,setCache} from '$lib/upstash'
 export async function handle({ request, resolve }) {
-	// request.locals.user = await getUserInformation(request.headers.cookie);
-	// const q = request.query.get('q')
-	const url = request.query.get('url') || ''
 
-	const isRecipePath =/show\.json$/.test(request.path)
+	const url = request.url.searchParams.get('url') || ''
+
+	const isRecipePath =/show\.json$/.test(request.url.pathname)
 
 	if ( isRecipePath ) {
 		// let { data: recipe } = await getCache(url)

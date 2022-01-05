@@ -1,7 +1,7 @@
 import cheerio from 'cheerio'
 
-export async function get({ query }) {
-	const q = query.get('q') || ''
+export async function get({ url: { searchParams } }) {
+	const q = searchParams.get('q') || ''
 
 	const url = `https://recetas-mexicanas.com.mx/?s=${q}`
 	const res = await fetch(url)

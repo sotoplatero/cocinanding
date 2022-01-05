@@ -1,6 +1,6 @@
 import cheerio from 'cheerio'
 
-export async function get({ query }) {
+export async function get({ url: { searchParams } }) {
 	const url = query.get('url')
 
 	if ( !url ) return null

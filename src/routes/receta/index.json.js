@@ -2,8 +2,8 @@ import { parse } from 'tldts';
 import { getCache, setCache } from '$lib/upstash'
 
 
-export async function get({ query }) {
-	const url = query.get('url')
+export async function get({ url: { searchParams } }) {
+	const url = searchParams.get('url')
 	const site = parse(url).domainWithoutSuffix
 
 	try {

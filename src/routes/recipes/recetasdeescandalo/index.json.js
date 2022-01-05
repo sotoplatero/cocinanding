@@ -1,8 +1,8 @@
 import cheerio from 'cheerio'
 import { Q } from '$lib/config'
 
-export async function get({ query }) {
-	const q = query.get('q') || Q.random()
+export async function get({ url: { searchParams } }) {
+	const q = searchParams.get('q') || Q.random()
 
 	const url = `https://www.recetasdeescandalo.com/?s=${q}`
 	const res = await fetch(url)

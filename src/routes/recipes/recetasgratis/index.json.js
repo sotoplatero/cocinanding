@@ -1,7 +1,7 @@
 import cheerio from 'cheerio'
 
-export async function get({ query }) {
-	const q = query.get('q') || Q.random()
+export async function get({ url: { searchParams } }) {
+	const q = searchParams.get('q') || Q.random()
 
 	const url = `https://www.recetasgratis.net/busqueda?q=${q}`
 	const res = await fetch(url)
