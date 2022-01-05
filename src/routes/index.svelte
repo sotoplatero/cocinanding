@@ -31,12 +31,18 @@
 	let promiseRecipes = getRecipes()
 
 	async function getRecipes() {
-		const res = await fetch(`/recipes/${ sites.random() }.json?q=${q}`);
-		return res.ok ? await res.json() : []
+		const recipes = await Promise.all(sites.map(async site => {
+			const res = await fetch(`/recipes/${ site }.json?q=${q}`);
+			return res.ok ? await res.json() : []
+		}))
+
+		return recipes.flat()
 	}
 	
 </script>
 
-{#await promiseRecipes then recipes}
+{#await promiseRecipes }
+	loading
+{:then recipes}
 	<Recipes {recipes} {sites} />
 {/await}
